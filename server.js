@@ -1,6 +1,7 @@
 const express = require("express");
 const { productRoute } = require("./src/routes/productRoutes.js");
 const mongoose = require("mongoose");
+var cors = require("cors");
 
 mongoose
   .connect("mongodb://localhost:27017/Products")
@@ -8,6 +9,7 @@ mongoose
   .catch((err) => console.error("not connected to database", err));
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.use("/products", productRoute);

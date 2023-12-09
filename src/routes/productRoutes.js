@@ -49,4 +49,14 @@ productRoute.put("/", async (req, res) => {
   }
 });
 
+productRoute.get("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const productById = await productsRepository.getByProductId({ id });
+    return res.status(200).json(productById);
+  } catch (e) {
+    return res.status(404).json({ error: "Unexpected Error" });
+  }
+});
+
 module.exports.productRoute = productRoute;

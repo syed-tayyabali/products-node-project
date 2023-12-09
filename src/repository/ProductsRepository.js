@@ -46,6 +46,12 @@ class ProductsRepository {
   async deleteProduct({ id }) {
     await productsModel.deleteOne({ _id: id });
   }
+
+  //get by id
+  async getByProductId({ id }) {
+    const getProduct = await productsModel.findById({ _id: id });
+    return getProduct;
+  }
 }
 
 module.exports.ProductsRepository = ProductsRepository;
