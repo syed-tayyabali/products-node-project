@@ -7,6 +7,7 @@ const productsRepository = new ProductsRepository();
 productRoute.post("/", async (req, res) => {
   try {
     const { name, description, quantity, price } = req.body;
+    console.log(name, description, quantity, price);
     await productsRepository.create({ name, description, quantity, price });
     return res.status(201).send();
   } catch (e) {
